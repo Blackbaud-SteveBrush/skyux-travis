@@ -6,9 +6,11 @@ set -e
 
 # Necessary to stop pull requests from forks from running.
 if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ]; then
-  nvm install-latest-npm
+  nvm install-latest-npm &
+  # Need to wait for the nvm subshell to finish before running the next command.
+  wait
   npm install -g @blackbaud/skyux-cli
-  skyux --version
+  skyux version
 else
   echo -e "Ignoring script. Pull requests from forks are run elsewhere."
 fi
