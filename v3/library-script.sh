@@ -3,7 +3,9 @@ set -e
 
 # Necessary to stop pull requests from forks from running.
 if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ]; then
-  npm run test:ci
+  skyux test --coverage library --logFormat none --platform travis
+  skyux build-public-library
+  skyux e2e --platform travis --logFormat none
 else
-  echo -e "Pull requests from forks are run via Savage."
+  echo -e "Ignoring script. Pull requests from forks are run elsewhere."
 fi

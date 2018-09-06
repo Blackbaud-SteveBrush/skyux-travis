@@ -6,5 +6,5 @@ if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ]; then
   nvm install-latest-npm
   npm install -g @blackbaud/skyux-cli
 else
-  echo -e "Pull requests from forks are run via Savage."
+  echo -e "Ignoring script. Pull requests from forks are run elsewhere."
 fi
