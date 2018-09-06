@@ -3,6 +3,7 @@ set -e
 
 # Necessary to stop pull requests from forks from running.
 if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ]; then
+  skyux version
   skyux test --coverage library --logFormat none --platform travis
   skyux build-public-library
   skyux e2e --platform travis --logFormat none
