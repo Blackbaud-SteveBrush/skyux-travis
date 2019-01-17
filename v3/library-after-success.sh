@@ -5,7 +5,11 @@ set -e
 if [[ "$TRAVIS_SECURE_ENV_VARS" == "true" ]]; then
 
   # Save any new baseline screenshots.
-  output=$(node ./node_modules/@blackbaud/skyux-builder-config/scripts/visual-baselines.js) || exit
+  if [ -d "./node_modules/@blackbaud/skyux-builder-config" ]; then
+    output=$(node ./node_modules/@blackbaud/skyux-builder-config/scripts/visual-baselines.js) || exit
+  else
+    output=$(node ./node_modules/@skyux-sdk/builder-config/scripts/visual-baselines.js) || exit
+  fi
 
   # Only run releases during a git tag build.
   if [[ -n "$TRAVIS_TAG" ]]; then
