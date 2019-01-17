@@ -5,6 +5,7 @@ set -e
 if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ]; then
   npm install
   npm install --no-save blackbaud/skyux-builder-config
+  npm install --no-save blackbaud/skyux-sdk-builder-config
 else
   echo -e "Ignoring script. Pull requests from forks are run elsewhere."
 fi
