@@ -9,9 +9,9 @@ if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ]; then
     echo -e "Running custom test step... `npm run test:ci`";
     npm run test:ci
   else
-    skyux test --coverage library --logFormat none --platform travis
+    skyux test --coverage library --platform travis
     skyux build-public-library
-    skyux e2e --platform travis --logFormat none
+    skyux e2e --platform travis
   fi
 else
   echo -e "Ignoring script. Pull requests from forks are run elsewhere."
