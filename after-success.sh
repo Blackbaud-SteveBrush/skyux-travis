@@ -4,10 +4,20 @@ set -e
 echo -e "Blackbaud - SKY UX Travis - After Success"
 
 function publish {
+
   echo -e "Publishing to NPM..."
-  npm publish --access public
+
+  # If the tag includes a '-' character, we can assume it's a prerelease version.
+  if [[ $TRAVIS_TAG =~ "-" ]]; then
+    echo -e "! PRERELEASE"
+    # npm publish --access public --tag next
+  else
+    echo -e "! NORMAL RELEASE";
+    # npm publish --access public --tag latest
+  fi
+
   echo -e "Successfully published to NPM.\n"
-  
+
   url="https://github.com/$TRAVIS_REPO_SLUG"
 
   # Create a message, linking to CHANGELOG.md if it exists
