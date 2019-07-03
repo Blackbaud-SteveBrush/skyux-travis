@@ -10,13 +10,13 @@ if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ]; then
     npm run test:ci
   else
     echo -e "Running `skyux test`...";
-    skyux test --coverage library --logFormat none --platform travis
+    skyux test --coverage library --platform travis
     echo -e "Done.";
     echo -e "Running `skyux build-public-library`...";
     skyux build-public-library
     echo -e "Done.";
     echo -e "Running `skyux e2e`...";
-    skyux e2e --platform travis --logFormat none
+    skyux e2e --platform travis
     echo -e "Done.";
   fi
 else
