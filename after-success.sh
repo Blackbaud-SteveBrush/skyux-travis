@@ -10,10 +10,10 @@ function publish {
   # If the tag includes a '-' character, we can assume it's a prerelease version.
   if [[ $TRAVIS_TAG =~ "-" ]]; then
     echo -e "Publishing to NPM with tag 'next'.";
-    # npm publish --access public --tag next
+    npm publish --access public --tag next
   else
     echo -e "Publishing to NPM with tag 'latest'.";
-    # npm publish --access public --tag latest
+    npm publish --access public --tag latest
   fi
 
   echo -e "Successfully published to NPM.\n"
